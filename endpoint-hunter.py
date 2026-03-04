@@ -214,7 +214,7 @@ def main():
             found = extract_endpoints_from_js(content, js_url, allowed_domains)
             endpoints.update(found)
 
-    logger.info(f"Total de endpoints únicos capturados: [bold]{len(endpoints)}[/bold]")
+    logger.info(f"Total de endpoints únicos capturados: {len(endpoints)}")
 
     # ================== VALIDAÇÃO COM RATE LIMIT ==================
     results = []
@@ -244,14 +244,14 @@ def main():
                 f.write(f"{url} → {status}\n")
         logger.info(f"[green]Resultados salvos em:[/green] {path.resolve()}")
 
-    console.print("[bold green]Caça finalizada![/bold green]")
+    console.print("Caça finalizada!")
 
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        console.print("\n[bold red]Interrompido pelo usuário.[/bold red]")
+        console.print("\nInterrompido pelo usuário.")
         sys.exit(1)
     except Exception as e:
         logger.exception(f"Erro fatal: {e}")
