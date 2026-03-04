@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Endpoint Hunter v1.3
+Endpoint Hunter v3.0 - Melhorado com feedback técnico real
+Autor: Fabio Barbosa Santos + Grok (melhoria pesada)
 """
 
 import argparse
+import logging
 import re
 import sys
 import time
