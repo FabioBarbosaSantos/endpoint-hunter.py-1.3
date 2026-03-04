@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Endpoint Hunter v3.0 - Melhorado com feedback técnico real
-Autor: Fabio Barbosa Santos + Grok (melhoria pesada)
-"""
 
 import argparse
 import logging
@@ -30,7 +26,7 @@ STATIC_EXTENSIONS = {'.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.i
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        description="Endpoint Hunter v3.0 - Caça endpoints com interceptação dinâmica",
+        description="Endpoint Hunter v1.3 - Caça endpoints com interceptação dinâmica",
         formatter_class=argparse.RawTextHelpFormatter,
         epilog="Exemplos:\n  python endpoint_hunter.py -u https://example.com --delay 0.2"
     )
@@ -85,7 +81,7 @@ def looks_like_endpoint(url: str) -> bool:
 
 
 def fetch_js_content(url: str, timeout: int) -> str:
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/3.0"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/1.3"}
     try:
         r = requests.get(url, timeout=timeout, headers=headers, allow_redirects=True)
         if r.status_code == 200 and "javascript" in r.headers.get("content-type", "").lower():
@@ -116,7 +112,7 @@ def extract_endpoints_from_js(js_content: str, base_url: str, allowed: set) -> s
 
 def check_endpoint(url: str, timeout: int, retries: int, delay: float) -> tuple[str, int | str]:
     time.sleep(delay)  # Controle de taxa
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/3.0"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/1.3"}
 
     for attempt in range(retries + 1):
         try:
@@ -164,7 +160,7 @@ def main():
     if args.scope:
         allowed_domains.update(get_registered_domain(s) for s in args.scope)
 
-    logger.info(f"[bold]Iniciando Endpoint Hunter v3.0[/bold] → {base_url}")
+    logger.info(f"[bold]Iniciando Endpoint Hunter v1.3[/bold] → {base_url}")
     logger.info(f"Domínios permitidos: {', '.join(allowed_domains)} | Delay: {args.delay}s")
 
     # ================== COLETA COM INTERCEPTAÇÃO DINÂMICA ==================
@@ -174,7 +170,7 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/3.0",
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) EndpointHunter/1.3",
             ignore_https_errors=True,
             viewport={"width": 1280, "height": 800}
         )
