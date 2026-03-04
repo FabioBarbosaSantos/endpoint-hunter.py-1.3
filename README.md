@@ -3,7 +3,7 @@
 1. Clone o repositório
 ```bash
 git clone https://github.com/FabioBarbosaSantos/endpoint-hunter.py-1.3.git
-cd endpoint-hunter-1.3
+cd endpoint-hunter.py-1.3
 ```
 2. Crie e ative um ambiente virtual (importante no Ubuntu 24.04+)
 ```bash
