@@ -29,7 +29,7 @@ python endpoint-hunter.py -u https://juice-shop.herokuapp.com
 python endpoint-hunter.py -u https://target.com --delay 0.3 --threads 10
 
 # Modo mais agressivo
-python endpoint-hunter.py -u https://target.com --threads 30 --delay 0.1 --aggressive
+python endpoint-hunter.py -u https://target.com --threads 30 --delay 0.1
 
 # Salvar resultados
 python endpoint-hunter.py -u https://target.com --output endpoints.txt
